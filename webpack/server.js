@@ -1,5 +1,5 @@
 const nodeExternals = require('webpack-node-externals');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 
@@ -13,6 +13,6 @@ module.exports = {
   },
   externals: [nodeExternals()],
   plugins: [
-    new CleanWebpackPlugin(['dist'], { verbose: true }),
+    new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['dist'], verbose: true }),
   ]
 };
