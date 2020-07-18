@@ -1,18 +1,21 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const constants = require('./constants');
+const { set } = require('lodash');
 
-module.exports = {
+const DEV_ENV = process.env.NODE_ENV === 'dev';
+const PROD_ENV = process.env.NODE_ENV === 'prod';
+
+let config = {
   target: 'web',
   entry: {
-    client: "./src/client/index.js",
+    client: './src/client/index.js',
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/client/index.html",
-      filename: "./index.html",
+      template: './src/client/index.html',
+      filename: './index.html',
     }),
   ],
-  devtool: 'source-map',
   devServer: {
     contentBase: constants.path,
     publicPath: constants.publicPath,
@@ -20,3 +23,13 @@ module.exports = {
     historyApiFallback: true,
   },
 };
+
+if (DEV_ENV) {
+  set(config, 'devtool', 'cheap-module-eval-source-map');
+}
+
+if (PROD_ENV) {
+  set(config, 'devtool', 'source-map');
+}
+
+module.exports = config;

@@ -6,9 +6,9 @@
   "author": "jbcazaux",
   "license": "MIT",
   "scripts": {
-    "start:dev": "webpack-dev-server",
+    "start:dev": "NODE_ENV=dev webpack-dev-server",
     "start": "node ./dist/server",
-    "build": "webpack"
+    "build": "NODE_ENV=prod webpack"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
