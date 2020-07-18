@@ -22,6 +22,18 @@ let config = {
     open: true,
     historyApiFallback: true,
   },
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { modules: true } },
+          { loader: 'sass-loader' },
+        ]
+      },
+    ]
+  }
 };
 
 if (DEV_ENV) {

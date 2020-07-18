@@ -16,7 +16,15 @@ let config = {
   externals: [nodeExternals()],
   plugins: [
     new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['dist'], verbose: true }),
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: ['null-loader']
+      },
+    ]
+  }
 };
 
 if (DEV_ENV) {
