@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const constants = require('./constants');
 const { set } = require('lodash');
 
@@ -15,6 +16,10 @@ let config = {
       template: './src/client/index.html',
       filename: './index.html',
     }),
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      disable: DEV_ENV
+    }),
   ],
   devServer: {
     contentBase: constants.path,
@@ -26,12 +31,24 @@ let config = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader', options: { modules: true } },
-          { loader: 'postcss-loader' },
-          { loader: 'sass-loader' },
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', options: { modules: true } },
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader' }
+          ]
+        })
+      },
+      {
+        test: /\.css$/i,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', options: { modules: true } },
+            { loader: 'postcss-loader' }
+          ]
+        })
       },
     ]
   }
