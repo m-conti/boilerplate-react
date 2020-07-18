@@ -1,6 +1,6 @@
-const webpack = require('webpack');
 const constants = require('./constants');
 const { set } = require('lodash');
+const eslintFormatter = require('react-dev-utils/eslintFormatter');
 
 const DEV_ENV = process.env.NODE_ENV === 'dev';
 const PROD_ENV = process.env.NODE_ENV === 'prod';
@@ -12,11 +12,19 @@ let config = {
     filename: '[name].js',
   },
   plugins: [
-    new webpack.DefinePlugin({ 'process.env': { NODE_ENV: `'development'` }}),
   ],
   resolve: { extensions: ['.js', '.json', '.jsx'] },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          formatter: eslintFormatter
+        }
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,

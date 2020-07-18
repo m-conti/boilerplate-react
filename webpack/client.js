@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const constants = require('./constants');
 const { set } = require('lodash');
@@ -8,6 +9,9 @@ const PROD_ENV = process.env.NODE_ENV === 'prod';
 
 let config = {
   target: 'web',
+  output: {
+    filename: PROD_ENV ? '[name].[chunkhash].js' : null,
+  },
   entry: {
     client: './src/client/index.js',
   },
@@ -17,7 +21,7 @@ let config = {
       filename: './index.html',
     }),
     new ExtractTextPlugin({
-      filename: '[name].css',
+      filename: PROD_ENV ? '[name].[md5:contenthash:hex:8].css' : '[name].css',
       disable: DEV_ENV
     }),
   ],
@@ -50,6 +54,19 @@ let config = {
           ]
         })
       },
+      {
+        test: /\.(png|je?pg|gif|svg)$/i,
+        use: [
+          { loader: 'url-loader', options: { limit: 8192 } },
+          { loader: 'img-loader', options: { enable: PROD_ENV } }
+        ]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+        use: [
+          { loader: 'file-loader' },
+        ],
+      }
     ]
   }
 };
@@ -60,6 +77,7 @@ if (DEV_ENV) {
 
 if (PROD_ENV) {
   set(config, 'devtool', 'source-map');
+  config.plugins.push(new ManifestPlugin());
 }
 
 module.exports = config;

@@ -1,7 +1,6 @@
 const nodeExternals = require('webpack-node-externals');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { set } = require('lodash');
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DEV_ENV = process.env.NODE_ENV === 'dev';
 const PROD_ENV = process.env.NODE_ENV === 'prod';
 
@@ -15,12 +14,11 @@ let config = {
   },
   externals: [nodeExternals()],
   plugins: [
-    new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['dist'], verbose: true }),
   ],
   module: {
     rules: [
       {
-        test: /\.(s[ac]ss|css)$/i,
+        test: /\.(s[ac]ss|css|png|jpg|gif|svg|woff2?|eot|ttf|otf)$/i,
         use: ['null-loader']
       },
     ]
@@ -32,7 +30,7 @@ if (DEV_ENV) {
 }
 
 if (PROD_ENV) {
-
+  config.plugins.push(new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['dist'], verbose: true }));
 }
 
 module.exports = config;

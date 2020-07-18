@@ -4,6 +4,8 @@ import style from './styles.sass';
 export default (props) => {
   const [ count, setCount ] = useState(0);
 
+  console.log(props);
+
   const randomize = () => {
     import('lodash').then(({ random }) => {
       changeCount(random(0, 100));
