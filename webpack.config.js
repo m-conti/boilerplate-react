@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable curly */
 const { mergeWith, isArray, isPlainObject } = require('lodash');
 let { common, serverSide, clientSide } = require('./webpack');
 

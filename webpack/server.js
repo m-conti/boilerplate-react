@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable curly */
 const nodeExternals = require('webpack-node-externals');
 const { set } = require('lodash');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -26,7 +28,7 @@ let config = {
 };
 
 if (DEV_ENV) {
-
+  set(config, 'entry.server', [ 'react-hot-loader/patch', config.entry.server ]);
 }
 
 if (PROD_ENV) {

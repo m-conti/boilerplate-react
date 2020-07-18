@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable curly */
 const constants = require('./constants');
 const { set } = require('lodash');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
@@ -30,7 +32,7 @@ let config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: [ 'react-hot-loader/webpack', 'babel-loader' ],
       },
     ],
   }
@@ -38,10 +40,12 @@ let config = {
 
 if (DEV_ENV) {
   set(config, 'mode', 'development');
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 if (PROD_ENV) {
   set(config, 'mode', 'production');
+  config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
 }
 
 module.exports = config;

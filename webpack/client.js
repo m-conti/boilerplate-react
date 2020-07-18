@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable curly */
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -74,6 +76,7 @@ let config = {
 
 if (DEV_ENV) {
   set(config, 'devtool', 'cheap-module-eval-source-map');
+  set(config, 'entry.client', [ 'react-hot-loader/patch', config.entry.client ]);
 }
 
 if (PROD_ENV) {
