@@ -1,8 +1,8 @@
 const nodeExternals = require('webpack-node-externals');
 const { set } = require('lodash');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const DEV_ENV = process.env.NODE_ENV === 'dev';
-const PROD_ENV = process.env.NODE_ENV === 'prod';
+const DEV_ENV = process.env.NODE_ENV === 'development';
+const PROD_ENV = process.env.NODE_ENV === 'production';
 
 let config = {
   target: 'node',

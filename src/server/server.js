@@ -16,6 +16,7 @@ server.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   next();
 });
+
 server.use('/public', express.static('dist'), express.static('public'));
 
 server.get('*', (req, res) => {

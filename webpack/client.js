@@ -4,13 +4,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const constants = require('./constants');
 const { set } = require('lodash');
 
-const DEV_ENV = process.env.NODE_ENV === 'dev';
-const PROD_ENV = process.env.NODE_ENV === 'prod';
+const DEV_ENV = process.env.NODE_ENV === 'development';
+const PROD_ENV = process.env.NODE_ENV === 'production';
 
 let config = {
   target: 'web',
   output: {
-    filename: PROD_ENV ? '[name].[chunkhash].js' : null,
+    filename: PROD_ENV ? '[name].js' : null,
   },
   entry: {
     client: './src/client/index.js',
@@ -21,7 +21,7 @@ let config = {
       filename: './index.html',
     }),
     new ExtractTextPlugin({
-      filename: PROD_ENV ? '[name].[md5:contenthash:hex:8].css' : '[name].css',
+      filename: '[name].css',
       disable: DEV_ENV
     }),
   ],
@@ -29,6 +29,7 @@ let config = {
     contentBase: constants.path,
     publicPath: constants.publicPath,
     open: true,
+    hot: DEV_ENV,
     historyApiFallback: true,
   },
   module: {
