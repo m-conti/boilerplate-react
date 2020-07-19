@@ -3,7 +3,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('./paths');
 const { set } = require('lodash');
 
@@ -23,10 +23,10 @@ let config = {
       template: './src/client/index.html',
       filename: './index.html',
     }),
-    new ExtractTextPlugin({
-      filename: '[name].css',
-      disable: DEV_ENV
-    }),
+    new MiniCssExtractPlugin({
+      filename: DEV_ENV ? '[name].css' : '[name].[hash].css',
+      chunkFilename: DEV_ENV ? '[id].css' : '[id].[hash].css',
+    })
   ],
   devServer: {
     contentBase: paths.out,
@@ -39,24 +39,20 @@ let config = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            { loader: 'css-loader', options: { modules: true } },
-            { loader: 'postcss-loader' },
-            { loader: 'sass-loader' }
-          ]
-        })
+        use: [
+          { loader: MiniCssExtractPlugin.loader, options: { hmr: DEV_ENV } },
+          { loader: 'css-loader', options: { modules: { localIdentName: '[local]__[hash:base64:5]' } } },
+          { loader: 'postcss-loader' },
+          { loader: 'sass-loader' }
+        ]
       },
       {
         test: /\.css$/i,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            { loader: 'css-loader', options: { modules: true } },
-            { loader: 'postcss-loader' }
-          ]
-        })
+        use: [
+          { loader: MiniCssExtractPlugin.loader, options: { hmr: DEV_ENV } },
+          { loader: 'css-loader', options: { modules: { localIdentName: '[local]__[hash:base64:5]' } } },
+          { loader: 'postcss-loader' }
+        ]
       },
       {
         test: /\.(png|je?pg|gif|svg)$/i,
