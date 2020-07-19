@@ -1,0 +1,5 @@
+=gradient($color1, $color2, $position:center top, $position2: center bottom)
+	background-color: $color1
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$color1}, endColorstr=#{$color2})
+	background-image: -moz-linear-gradient($position, $color1, $color2)
+	background-image: -webkit-gradient(linear, $position, $position2, from($color1), to($color2))
