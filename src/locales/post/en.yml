@@ -1,0 +1,13 @@
+delete:
+  title: Delete
+  content: do you really want to delete " {{title}} "
+modal:
+  title:
+    create: Add a post
+    update: Change the post
+fields:
+  labels:
+    titleFr: French Title
+    titleEn: English Title
+    descriptionFr: French Description
+    descriptionEn: English Description

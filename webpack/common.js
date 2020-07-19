@@ -26,6 +26,7 @@ let config = {
       paths.src
     ],
     alias: {
+      'react-dom': '@hot-loader/react-dom',
       'webpack.config': paths.webpackConfig,
     },
     plugins: [
