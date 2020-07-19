@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from './styles.sass';
+import style from 'styles';
 
 export default (props) => {
   const [ count, setCount ] = useState(0);

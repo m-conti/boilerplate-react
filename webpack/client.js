@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const constants = require('./constants');
+const paths = require('./paths');
 const { set } = require('lodash');
 
 const DEV_ENV = process.env.NODE_ENV === 'development';
@@ -29,8 +29,8 @@ let config = {
     }),
   ],
   devServer: {
-    contentBase: constants.path,
-    publicPath: constants.publicPath,
+    contentBase: paths.out,
+    publicPath: paths.public,
     open: true,
     hot: DEV_ENV,
     historyApiFallback: true,

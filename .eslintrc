@@ -153,7 +153,7 @@
       "no-path-concat": 1, //disallow string concatenation with __dirname and __filename
       "no-process-exit": 1, //disallow process.exit()
       "no-restricted-modules": [1, ""], //restrict usage of specified node modules
-      "no-sync": 1, //disallow use of synchronous methods
+      "no-sync": ["error", { "allowAtRootLevel": true }], //disallow use of synchronous methods
   
       /* Stylistic Issues */
       "array-bracket-spacing": [1, "always", { "singleValue": false, "objectsInArrays": false, "arraysInArrays": false }], //enforce spacing inside array brackets (fixable)

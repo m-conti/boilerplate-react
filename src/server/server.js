@@ -1,10 +1,10 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import App from '../App';
-import html from './html';
+import App from 'App';
+import html from 'server/html';
 import webpack from 'webpack';
-import webpackConfig from '../../webpack.config';
+import webpackConfig from 'webpack.config';
 
 
 const port = 8081;

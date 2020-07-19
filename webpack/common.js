@@ -1,8 +1,9 @@
 /* eslint-disable prefer-const */
 /* eslint-disable curly */
-const constants = require('./constants');
+const paths = require('./paths');
 const { set } = require('lodash');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const webpack = require('webpack');
 
 const DEV_ENV = process.env.NODE_ENV === 'development';
@@ -10,14 +11,27 @@ const PROD_ENV = process.env.NODE_ENV === 'production';
 
 let config = {
   output: {
-    path: constants.path,
-    publicPath: constants.publicPath,
+    path: paths.out,
+    publicPath: paths.public,
     filename: '[name].js',
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) }}),
   ],
-  resolve: { extensions: [ '.js', '.jsx', '.ts', '.tsx', '.json' ] },
+  resolve: {
+    extensions: [ '.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss', '.sass' ],
+    modules: [
+      'node_modules',
+      paths.nodeModules,
+      paths.src
+    ],
+    alias: {
+      'webpack.config': paths.webpackConfig,
+    },
+    plugins: [
+      new ModuleScopePlugin(paths.src, [paths.packageJson])
+    ]
+  },
   module: {
     rules: [
       {
