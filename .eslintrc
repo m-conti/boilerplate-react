@@ -35,7 +35,8 @@
     },
     "parser": "babel-eslint",
     "plugins": [
-      "react"
+      "react",
+      "@typescript-eslint"
     ],
     "rules": {
       /* Possible Errors */
@@ -116,7 +117,7 @@
       "no-self-compare": 1, //disallow comparisons where both sides are exactly the same
       "no-sequences": 1, //disallow use of the comma operator
       "no-throw-literal": 1, //restrict what can be thrown as an exception
-      "no-unused-expressions": [1, { allowShortCircuit: true, allowTernary: true }], //disallow usage of expressions in statement position
+      "no-unused-expressions": [1, { "allowShortCircuit": true, "allowTernary": true }], //disallow usage of expressions in statement position
       "no-useless-call": 1, //disallow unnecessary .call() and .apply()
       "no-useless-concat": 1, //disallow unnecessary concatenation of literals or template literals
       "no-void": 0, //disallow use of the void operator
@@ -193,7 +194,7 @@
         "DebuggerStatement",
         "LabeledStatement",
         "WithStatement",
-        "ExportAllDeclaration",
+        "ExportAllDeclaration"
       ], //disallow use of certain syntax in code
       "no-spaced-func": 1, //disallow space between function identifier and application (fixable)
       "no-ternary": 0, //disallow the use of ternary operators
@@ -256,7 +257,7 @@
       "react/jsx-boolean-value": 1, //Enforce boolean attributes notation in JSX
       "react/jsx-closing-bracket-location": 0, //Validate closing bracket location in JSX
       "react/jsx-curly-spacing": 0, //Enforce or disallow spaces inside of curly braces in JSX attributes
-      "react/jsx-indent-props": [1, 'tab'], //Validate props indentation in JSX
+      "react/jsx-indent-props": [1, "tab"], //Validate props indentation in JSX
       "react/jsx-key": 1, // Validate JSX has key prop when in array or iterator
       "react/jsx-max-props-per-line": 0, //Limit maximum of props on a single line in JSX
       "react/jsx-no-bind": 0, // Prevent usage of .bind() and arrow functions in JSX props

@@ -17,12 +17,12 @@ let config = {
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) }}),
   ],
-  resolve: { extensions: [ '.js', '.json', '.jsx' ] },
+  resolve: { extensions: [ '.js', '.jsx', '.ts', '.tsx', '.json' ] },
   module: {
     rules: [
       {
         enforce: 'pre',
-        test: /\.jsx?$/,
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
@@ -30,10 +30,20 @@ let config = {
         }
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [ 'react-hot-loader/webpack', 'babel-loader' ],
       },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
+      {
+        test: /\.ya?ml$/,
+        type: 'json',
+        use: 'yaml-loader'
+      }
     ],
   }
 };

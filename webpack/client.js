@@ -2,6 +2,7 @@
 /* eslint-disable curly */
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const constants = require('./constants');
 const { set } = require('lodash');
@@ -77,11 +78,12 @@ let config = {
 if (DEV_ENV) {
   set(config, 'devtool', 'cheap-module-eval-source-map');
   set(config, 'entry.client', [ 'react-hot-loader/patch', config.entry.client ]);
+  config.plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, defaultSizes: 'gzip' }));
 }
 
 if (PROD_ENV) {
-  set(config, 'devtool', 'source-map');
   config.plugins.push(new ManifestPlugin());
+  config.plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, defaultSizes: 'gzip', analyzerMode: 'static' }));
 }
 
 module.exports = config;
