@@ -1,10 +1,9 @@
 {
-  "name": "ss-react",
+  "name": "ssr-webpack",
   "version": "1.0.0",
-  "description": "server side react",
-  "main": "index.js",
-  "author": "jbcazaux",
-  "license": "MIT",
+  "description": "boilerplate server side react",
+  "author": "mconti",
+  "license": "42",
   "scripts": {
     "start:dev": "NODE_ENV=development webpack-dev-server",
     "start": "node ./dist/server",
