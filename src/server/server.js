@@ -24,7 +24,7 @@ server.use('/public', express.static('dist'), express.static('public'));
 server.use(require('webpack-hot-middleware')(webpack(webpackConfig)));
 
 server.get('*', (req, res) => {
-  const body = renderToString(<App />);
+  const body = renderToString(<App serverSide />);
   console.log(body);
   const title = 'Server Side React';
   const app = html({

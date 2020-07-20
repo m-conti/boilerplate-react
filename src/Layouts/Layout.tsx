@@ -1,11 +1,12 @@
-import React, { ReactChild, ComponentType, FunctionComponent } from 'react';
+import React, { ReactChild, FunctionComponent, ComponentType } from 'react';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import error from '@material-ui/core/colors/deepOrange';
 import success from '@material-ui/core/colors/green';
 import { SnackbarProvider } from 'notistack';
-import { StaticRouter, BrowserRouter } from 'react-router-dom';
+import { StaticRouter, BrowserRouter, BrowserRouterProps } from 'react-router-dom';
+import { StaticRouterProps } from 'react-router';
 import { Header } from 'Components/Layouts';
 import classes from './classes.sass';
 
@@ -20,7 +21,7 @@ const Layout: FunctionComponent<{
   serverSide:boolean,
   children: ReactChild
 }> = ({ serverSide, children }) => {
-  const Router: ComponentType = serverSide ? StaticRouter : BrowserRouter;
+  const Router: ComponentType<StaticRouterProps|BrowserRouterProps> = serverSide ? StaticRouter : BrowserRouter;
   return <ThemeProvider theme={theme}>
     <Router>
       {/* <Lang> */}

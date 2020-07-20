@@ -26,7 +26,6 @@ let config = {
       paths.src
     ],
     alias: {
-      'react-dom': '@hot-loader/react-dom',
       'webpack.config': paths.webpackConfig,
     },
     plugins: [
@@ -66,6 +65,7 @@ let config = {
 if (DEV_ENV) {
   set(config, 'mode', 'development');
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  set(config, 'resolve.alias.react-dom', '@hot-loader/react-dom');
 }
 
 if (PROD_ENV) {
