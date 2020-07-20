@@ -52,7 +52,7 @@ let config = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: [ 'react-hot-loader/webpack', 'ts-loader' ],
       },
       {
         test: /\.ya?ml$/,
