@@ -50,7 +50,8 @@
       "plugins": ["@typescript-eslint"],
       "rules": {
         "@typescript-eslint/ban-types": 0,
-        "@typescript-eslint/no-explicit-any": 0
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-namespace": 0
       }
     }
   ],
@@ -162,7 +163,7 @@
 
     /* Node.js */
     "callback-return": 1, //enforce return after a callback
-    "global-require": 1, //enforce require() on top-level module scope
+    "global-require": 0, //enforce require() on top-level module scope
     "handle-callback-err": 1, //enforce error handling in callbacks
     "no-mixed-requires": 1, //disallow mixing regular variable and require declarations
     "no-new-require": 1, //disallow use of new operator with the require function

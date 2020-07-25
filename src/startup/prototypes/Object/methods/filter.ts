@@ -1,4 +1,5 @@
-import { filter, Dictionary, NumericDictionary } from 'lodash';
+import filter from 'lodash/filter';
+import { Dictionary, NumericDictionary } from 'types/lodash';
 
 
 export default function(

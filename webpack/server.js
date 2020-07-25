@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable curly */
 const nodeExternals = require('webpack-node-externals');
-const { set } = require('lodash');
+const set = require('lodash/set');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DEV_ENV = process.env.NODE_ENV === 'development';
 const PROD_ENV = process.env.NODE_ENV === 'production';

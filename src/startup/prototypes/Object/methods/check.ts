@@ -1,5 +1,10 @@
-import { every, some, ConformsPredicateObject, isMatch, isEqual, isEmpty, } from 'lodash';
-import { tFunctionalMap } from 'typings/types';
+import every from 'lodash/every';
+import some from 'lodash/some';
+import isMatch from 'lodash/isMatch';
+import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
+import { tFunctionalMap } from 'types/types';
+import { ConformsPredicateObject } from 'types/lodash';
 
 const actions: tFunctionalMap = {
   every: every, some: some,

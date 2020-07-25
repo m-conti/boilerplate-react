@@ -1,7 +1,7 @@
 import i18n from 'startup/i18n/i18n';
-import moment from 'moment-timezone';
+import moment from 'moment';
 import { TOptions, Callback, TFunction } from 'i18next';
-import { Global } from 'typings/global';
+import { Global } from 'types/global';
 
 declare const global: Global;
 

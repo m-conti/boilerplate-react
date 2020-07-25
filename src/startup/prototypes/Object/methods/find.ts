@@ -1,4 +1,5 @@
-import { find, Dictionary, NumericDictionary } from 'lodash';
+import find from 'lodash/find';
+import { Dictionary, NumericDictionary } from 'types/lodash';
 
 
 export default function(

@@ -1,9 +1,11 @@
-import { pick, pickBy } from 'lodash';
+import pick from 'lodash/pick';
+import pickBy from 'lodash/pickBy';
 import withMapper from '../../helpers/withMapper';
+import { Dictionary, NumericDictionary } from 'types/lodash';
 
 
 export default withMapper(function(
-  this: object,
+  this: Dictionary<never>|NumericDictionary<never>,
   arg: [string]|string|((value: never, key: string) => unknown)
 ): object {
   if (typeof(arg) === 'function')

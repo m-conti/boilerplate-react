@@ -1,4 +1,4 @@
-import { reduce } from 'lodash';
+import reduce from 'lodash/reduce';
 
 function flatten(this:object, prefix = ''): object {
   return reduce(this, (obj:object, elem:unknown, key:string) => {

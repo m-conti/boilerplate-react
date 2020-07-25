@@ -5,7 +5,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('./paths');
-const { set } = require('lodash');
+const set = require('lodash/set');
 
 const DEV_ENV = process.env.NODE_ENV === 'development';
 const PROD_ENV = process.env.NODE_ENV === 'production';

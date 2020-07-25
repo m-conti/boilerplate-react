@@ -1,2 +1,1 @@
-
-global.lang = require('./Lang/class').default;
+require('./Lang/class');

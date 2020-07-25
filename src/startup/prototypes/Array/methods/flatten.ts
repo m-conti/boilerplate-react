@@ -1,5 +1,5 @@
-import { flattenDeep, flattenDepth } from 'lodash';
-
+import flattenDeep from 'lodash/flattenDeep';
+import flattenDepth from 'lodash/flattenDepth';
 
 export default function(
   this: Array<any>,

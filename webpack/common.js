@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable curly */
 const paths = require('./paths');
-const { set } = require('lodash');
+const set = require('lodash/set');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const webpack = require('webpack');
@@ -17,9 +17,10 @@ let config = {
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) }}),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
   resolve: {
-    extensions: [ '.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss', '.sass' ],
+    extensions: [ '.js', '.jsx', '.ts', '.tsx', '.json' ],
     modules: [
       'node_modules',
       paths.nodeModules,

@@ -1,4 +1,5 @@
-import { debounce, DebounceSettings } from 'lodash';
+import debounce from 'lodash/debounce';
+import { DebounceSettings } from 'types/lodash';
 
 
 export default function(

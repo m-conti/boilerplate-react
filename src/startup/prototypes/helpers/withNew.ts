@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 export default (fct: Function): Function => {
   const wrapper = function(this: object, ...args: [any]): any {

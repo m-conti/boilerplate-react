@@ -11,7 +11,6 @@ const Counter: FunctionComponent = () => {
   }
 
   const changeCount = (value: number) => {
-    console.log(value);
     setCount(value);
   };
 

@@ -1,6 +1,6 @@
-import { every } from 'lodash';
+import every from 'lodash/every';
 import validator from 'validator';
-import { tCheckString, tImport } from 'typings/types';
+import { tCheckString, tImport } from 'types/types';
 
 
 const types = [

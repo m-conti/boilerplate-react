@@ -1,5 +1,6 @@
-import { forEach, forEachRight } from 'lodash';
-import { tFunctionalMap } from 'typings/types';
+import forEach from 'lodash/forEach';
+import forEachRight from 'lodash/forEachRight';
+import { tFunctionalMap } from 'types/types';
 
 
 const actions: tFunctionalMap = {

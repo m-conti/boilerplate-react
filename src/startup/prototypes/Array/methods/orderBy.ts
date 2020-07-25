@@ -1,4 +1,5 @@
-import { orderBy, ObjectIteratee, ObjectIterator } from 'lodash';
+import orderBy from 'lodash/orderBy';
+import { ObjectIteratee } from 'types/lodash';
 
 
 export default function(
@@ -8,8 +9,9 @@ export default function(
     |number
     |symbol
     |[string|number|symbol, any]
-    |ObjectIterator<object, unknown>
     |readonly [ObjectIteratee<object>]
+    |ObjectIteratee<object>
+    |[ObjectIteratee<object>]
     |undefined,
   orders?: boolean|'asc'|'desc'|readonly [(boolean|'asc'|'desc')]|undefined
 ): Array<object> {

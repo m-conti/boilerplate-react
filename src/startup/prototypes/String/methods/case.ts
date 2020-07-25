@@ -1,5 +1,13 @@
-import { camelCase, snakeCase, startCase, kebabCase, upperFirst, upperCase, lowerCase, capitalize } from 'lodash';
-import { tFunctionalMap } from 'typings/types';
+import camelCase from 'lodash/camelCase';
+import snakeCase from 'lodash/snakeCase';
+import startCase from 'lodash/startCase';
+import kebabCase from 'lodash/kebabCase';
+import upperFirst from 'lodash/upperFirst';
+import upperCase from 'lodash/upperCase';
+import lowerCase from 'lodash/lowerCase';
+import capitalize from 'lodash/capitalize';
+
+import { tFunctionalMap } from 'types/types';
 
 const cases: tFunctionalMap = {
   'pascal': (s:string) => upperFirst(camelCase(s)), 'camel': camelCase,

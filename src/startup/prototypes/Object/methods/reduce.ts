@@ -1,5 +1,7 @@
-import { reduce, reduceRight, Dictionary, NumericDictionary, MemoListIterator } from 'lodash';
-import { tFunctionalMap } from 'typings/types';
+import reduce from 'lodash/reduce';
+import reduceRight from 'lodash/reduceRight';
+import { tFunctionalMap } from 'types/types';
+import { MemoListIterator, Dictionary, NumericDictionary } from 'types/lodash';
 
 
 const actions: tFunctionalMap = {
