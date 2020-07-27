@@ -1,6 +1,8 @@
 /* eslint-disable prefer-const */
 /* eslint-disable curly */
-const { mergeWith, isArray, isPlainObject } = require('lodash');
+const mergeWith = require('lodash/mergeWith');
+const isArray = require('lodash/isArray');
+const isPlainObject = require('lodash/isPlainObject');
 let { common, serverSide, clientSide } = require('./webpack');
 
 const mergeWebpack = (...args) => mergeWith(...args, (targetVal, sourceVal) => {

@@ -45,7 +45,7 @@ let config = {
         }
       },
       {
-        test: /\.jsx?$/,
+        test: /(?!\.worker)\.jsx?$/,
         exclude: /node_modules/,
         use: [ 'react-hot-loader/webpack', 'babel-loader' ],
       },

@@ -66,6 +66,12 @@ let config = {
         use: [
           { loader: 'file-loader' },
         ],
+      },
+      {
+        test: /\.worker.js/i,
+        use: [
+          { loader: 'worker-loader' }
+        ],
       }
     ]
   }
