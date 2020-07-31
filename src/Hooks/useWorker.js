@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import * as workers from 'workers';
 
 function useWorker(workerName, callback = () => null) {
@@ -10,30 +10,31 @@ function useWorker(workerName, callback = () => null) {
     const worker = new WorkerConstructor();
     worker.onmessage = messageHandler;
     worker.onerror = errorHandler;
-    return worker.postMessage.bind(worker);
+    setPost(() => worker.postMessage.bind(worker));
+    return () => worker.terminate();
   };
 
   const messageHandler = ({ data: { result, error } }) => {
     if (error) return console.log(`${workerName}Worker error:`, error);
     console.log(`${workerName}Worker return results:`, result);
-    setState({ ...state, responses: [ ...state.responses, result ] });
+    results.current = [ ...results.current, result ];
   };
 
   const errorHandler = ({ filename, lineno, message }) => {
-    console.error(`Error ${workerName}Worker: ${filename}, Line: ${lineno}, ${message}`);
+    console.error(
+      `Error ${workerName}Worker: ${filename}, Line: ${lineno}, ${message}`
+    );
   };
 
-  const responseHandler = () => {
-    if (state.responses.length)
-      return callback(state.responses[state.responses.length - 1]);
-  };
+  const resultHandler = () => results.current.length && callback(results.current.aslast());
 
-  const [ state, setState ] = useState({ responses: [] });
-  const [post] = useState(initWorker);
+  const results = useRef([]);
+  const [ post, setPost ] = useState(null);
 
-  useEffect(responseHandler, [state.responses]);
+  useEffect(resultHandler, [results.current]);
+  useEffect(initWorker, []);
 
-  return [ state, post ];
+  return [ results.current, post ];
 }
 
 export default useWorker;

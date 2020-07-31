@@ -20,7 +20,7 @@ let config = {
   module: {
     rules: [
       {
-        test: /\.(s[ac]ss|css|png|jpe?g|gif|svg|woff2?|eot|ttf|otf|\.worker.js)$/i,
+        test: /\.(s[ac]ss|css|png|jpe?g|gif|svg|woff2?|eot|ttf|otf|\.worker\.js)$/i,
         use: ['null-loader']
       },
     ]
