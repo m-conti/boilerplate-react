@@ -3,9 +3,9 @@ import { DebounceSettings } from 'types/lodash';
 
 
 export default function(
-  this: (...args: any) => any,
+  this: (...args: unknown[]) => unknown,
   wait?: number,
   options?: DebounceSettings,
-): (...args: any) => any {
+): (...args: unknown[]) => unknown {
   return debounce(this, wait, options);
 }

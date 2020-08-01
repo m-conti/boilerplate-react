@@ -14,6 +14,6 @@ export default function(
   this: string,
   select: 'date'|'translate'|'path',
   params?: string | TOptions<object>
-): string | object {
+): string | object | moment.Moment {
   return (cases[select] || (() => this))(this, params);
 }

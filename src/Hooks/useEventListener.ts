@@ -1,6 +1,9 @@
-function useEventListener(eventName, handler = () => null, element = window) {
+import { useRef, useEffect } from 'react';
 
-  const savedHandler = useRef();
+
+const useEventListener = (eventName: string, handler = () => null, element: Node | Window = window): void => {
+
+  const savedHandler = useRef<Function>(handler);
 
   useEffect(() => {
     savedHandler.current = handler;
@@ -9,7 +12,7 @@ function useEventListener(eventName, handler = () => null, element = window) {
   useEffect(() => {
     const isSupported = element && element.addEventListener;
     if (!isSupported) return;
-    const eventListener = (event) => savedHandler.current(event);
+    const eventListener = (event: Event) => savedHandler.current(event);
     element.addEventListener(eventName, eventListener);
     return () => element.removeEventListener(eventName, eventListener);
   }, [ eventName, element ]);

@@ -1,7 +1,6 @@
 import Lang from 'startup/global/Lang/class';
 
 
-
 export interface Global {
   document: Document;
   window: Window;

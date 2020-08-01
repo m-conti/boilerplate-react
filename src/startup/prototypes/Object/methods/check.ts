@@ -8,7 +8,7 @@ import { ConformsPredicateObject } from 'types/lodash';
 
 const actions: tFunctionalMap = {
   every: every, some: some,
-  none: (...args:[any]): boolean => !some(...args),
+  none: (col: Object, predicate: ConformsPredicateObject<object> | object): boolean => !some(col, predicate),
   match: isMatch, equal: isEqual, empty: isEmpty,
 };
 

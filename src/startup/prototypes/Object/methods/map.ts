@@ -18,6 +18,6 @@ export default function(
   this: Dictionary<never>|NumericDictionary<never>,
   iteratee: Function,
   option: 'key'|'value'|'array'|'flat' = 'array',
-): Array<any> {
+): Array<any> | object {
   return actions[option](this, iteratee);
 }

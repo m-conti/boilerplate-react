@@ -2,9 +2,9 @@ import delay from 'lodash/delay';
 
 
 export default function(
-  this: (...args: any) => any,
+  this: (...args: unknown[]) => unknown,
   wait: number,
-  ...params: [any]
-): any {
+  ...params: unknown[]
+): unknown {
   return delay(this, wait, ...params);
 }

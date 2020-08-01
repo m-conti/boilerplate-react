@@ -51,7 +51,8 @@
       "rules": {
         "@typescript-eslint/ban-types": 0,
         "@typescript-eslint/no-explicit-any": 0,
-        "@typescript-eslint/no-namespace": 0
+        "@typescript-eslint/no-namespace": 0,
+        "@typescript-eslint/no-empty-function": 0
       }
     }
   ],
@@ -275,7 +276,7 @@
     "react/jsx-boolean-value": 1, //Enforce boolean attributes notation in JSX
     "react/jsx-closing-bracket-location": 0, //Validate closing bracket location in JSX
     "react/jsx-curly-spacing": 0, //Enforce or disallow spaces inside of curly braces in JSX attributes
-    "react/jsx-indent-props": [1, "tab"], //Validate props indentation in JSX
+    "react/jsx-indent-props": [1, 2], //Validate props indentation in JSX
     "react/jsx-key": 1, // Validate JSX has key prop when in array or iterator
     "react/jsx-max-props-per-line": 0, //Limit maximum of props on a single line in JSX
     "react/jsx-no-bind": 0, // Prevent usage of .bind() and arrow functions in JSX props

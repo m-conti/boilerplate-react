@@ -12,7 +12,7 @@ const types = [
   },
   {
     check: (select: unknown): boolean => (typeof select === 'string'),
-    action: function(this: string, select: unknown, ...params:any): boolean {
+    action: function(this: string, select: unknown, ...params: any[]): boolean {
       return ((validator as unknown as tImport)[(select as string)] || (() => false))(this, ...params)
     }
   },
@@ -27,7 +27,7 @@ const types = [
 export default function(
   this: string,
   selects: string|tCheckString|RegExp|[string|tCheckString|RegExp],
-  ...params:[any]
+  ...params: any[]
 ): boolean {
   if (selects instanceof Array)
     return every(selects, (select) => types.find(({ check }) => check(select))?.action.call(this, select));
