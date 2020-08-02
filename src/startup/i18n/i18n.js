@@ -5,7 +5,7 @@ import * as config from 'locales/config';
 i18n
   .use(detector)
   .init({
-    debug: true,
+    debug: process.env.NODE_ENV === 'development',
     lng: config.main,
     fallbackLng: config.main,
     whitelist: config.langs,

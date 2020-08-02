@@ -1,5 +1,5 @@
 declare interface Array<T> {
-  asfisrt(): T | null;
+  asfirst(): T | null;
   aslast(): T | null;
   asflat(depth?: number): any[];
   asorder(
@@ -12,6 +12,6 @@ declare interface Array<T> {
     |ObjectIteratee<object>
     |[ObjectIteratee<object>]
     |undefined,
-    orders?: boolean|'asc'|'desc'|readonly [(boolean|'asc'|'desc')]|undefined
+    orders?: boolean|'asc'|'desc'|readonly (boolean|'asc'|'desc')[]|undefined
   ) : any[];
 }

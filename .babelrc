@@ -3,9 +3,17 @@
     [
       "@babel/env",
       {
-        "modules": false
+        "modules": false,
+        "targets": {
+          "node": "current"
+        }
       }
     ],
     "@babel/react"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": ["@babel/env", "@babel/react", "@babel/typescript"]
+    }
+  }
 }

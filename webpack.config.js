@@ -3,7 +3,7 @@
 const mergeWith = require('lodash/mergeWith');
 const isArray = require('lodash/isArray');
 const isPlainObject = require('lodash/isPlainObject');
-let { common, serverSide, clientSide } = require('./webpack');
+let { common, serverSide, clientSide } = require('./config/webpack');
 
 const mergeWebpack = (...args) => mergeWith(...args, (targetVal, sourceVal) => {
   if (isArray(targetVal))

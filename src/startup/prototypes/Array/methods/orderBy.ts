@@ -13,7 +13,7 @@ export default function(
     |ObjectIteratee<object>
     |[ObjectIteratee<object>]
     |undefined,
-  orders?: boolean|'asc'|'desc'|readonly [(boolean|'asc'|'desc')]|undefined
+  orders?: boolean|'asc'|'desc'|readonly (boolean|'asc'|'desc')[]|undefined
 ): Array<object> {
   return orderBy(this, iteratees, orders);
 }

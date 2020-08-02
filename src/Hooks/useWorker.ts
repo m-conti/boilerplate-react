@@ -18,7 +18,6 @@ interface IWorkerError extends ErrorEvent {
 
 const useWorker = (workerName: string, callback: CallableFunction = () => {}): [any[], TPost] => {
   const initWorker = () => {
-    console.log(`INIT ${workerName}Worker`);
     const WorkerConstructor = (workers as tImport)[workerName] as unknown as Worker & (new () => Worker);
     if (!WorkerConstructor)
       throw new Error(`"${workerName}" is not handle as worker.`);
@@ -31,7 +30,6 @@ const useWorker = (workerName: string, callback: CallableFunction = () => {}): [
 
   const messageHandler = ({ data: { result, error } }: IWorkerResult) => {
     if (error) return console.log(`${workerName}Worker error:`, error);
-    console.log(`${workerName}Worker return results:`, result);
     results.current = [ ...results.current, result ];
   };
 
