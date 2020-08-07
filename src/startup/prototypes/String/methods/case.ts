@@ -3,8 +3,8 @@ import snakeCase from 'lodash/snakeCase';
 import startCase from 'lodash/startCase';
 import kebabCase from 'lodash/kebabCase';
 import upperFirst from 'lodash/upperFirst';
-import upperCase from 'lodash/upperCase';
-import lowerCase from 'lodash/lowerCase';
+import upperCase from 'lodash/toUpper';
+import lowerCase from 'lodash/toLower';
 import capitalize from 'lodash/capitalize';
 
 import { tFunctionalMap } from 'types/types';
