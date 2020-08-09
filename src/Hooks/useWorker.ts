@@ -1,5 +1,6 @@
 import { tImport } from './../types/types.d';
 import { useEffect, useState, useRef } from 'react';
+import useForceUpdate from './useForceUpdate';
 import * as workers from 'workers';
 
 type TPost = Function | null;
@@ -17,6 +18,8 @@ interface IWorkerError extends ErrorEvent {
 }
 
 const useWorker = (workerName: string, callback: CallableFunction = () => {}): [any[], TPost] => {
+  const forceUpdate = useForceUpdate();
+
   const initWorker = () => {
     const WorkerConstructor = (workers as tImport)[workerName] as unknown as Worker & (new () => Worker);
     if (!WorkerConstructor)
@@ -31,6 +34,7 @@ const useWorker = (workerName: string, callback: CallableFunction = () => {}): [
   const messageHandler = ({ data: { result, error } }: IWorkerResult) => {
     if (error) return console.log(`${workerName}Worker error:`, error);
     results.current = [ ...results.current, result ];
+    forceUpdate();
   };
 
   const errorHandler = ({ filename, lineno, message }: IWorkerError) => {
