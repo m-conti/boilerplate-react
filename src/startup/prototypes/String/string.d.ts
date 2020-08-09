@@ -29,5 +29,14 @@ declare global {
       select: 'date' | 'translate' | 'path',
       params?: string | TOptions<object>
     ): string | object | Moment;
+    astrim(
+      select: 'center' | 'start' | 'end' = 'center',
+      chars = ' '
+    ): string;
+    aspad(
+      select: 'center' | 'start' | 'end' = 'center',
+      length = 0,
+      chars = ' '
+    ): string;
   }
 }

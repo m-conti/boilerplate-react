@@ -5,6 +5,7 @@ declare global {
     asfirst(): T | null;
     aslast(): T | null;
     asflat(depth?: number): any[];
+    asshuffle(): Array<T>;
     asorder(
       iteratees:
         | string
