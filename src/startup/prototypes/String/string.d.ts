@@ -24,7 +24,7 @@ declare global {
         | [string | tCheckString | RegExp],
       ...params: any[]
     ): boolean;
-    asformat(params: object): string;
+    asformat(params?: object, option?: TemplateOption): string;
     asconvert(
       select: 'date' | 'translate' | 'path',
       params?: string | TOptions<object>
