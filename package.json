@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "boilerplate server side react",
   "author": "mconti",
-  "license": "42",
+  "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "start:prod": "node ./dist/server",
