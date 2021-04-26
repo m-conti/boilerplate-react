@@ -68,7 +68,7 @@ let config = {
         ],
       },
       {
-        test: /\.worker.js/i,
+        test: /\.worker.js$/i,
         use: [
           { loader: 'worker-loader' }
         ],
@@ -80,7 +80,7 @@ let config = {
 if (DEV_ENV) {
   set(config, 'devtool', 'cheap-module-eval-source-map');
   set(config, 'entry.client', [ 'react-hot-loader/patch', config.entry.client ]);
-  config.plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, defaultSizes: 'gzip' }));
+  config.plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, defaultSizes: 'gzip', analyzerPort: 8989 }));
 }
 
 if (PROD_ENV) {
