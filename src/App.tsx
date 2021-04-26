@@ -1,13 +1,18 @@
 import 'startup';
 
 import React, { FunctionComponent } from 'react';
-import Counter from 'Components/Counter';
+import Router from 'routes/Router';
 import Layout from 'Layouts/Layout';
+import useForceUpdate from 'Hooks/useForceUpdate';
 
 const App: FunctionComponent<{
   serverSide: boolean
-}> = ({ serverSide }) => <Layout serverSide={serverSide}>
-  <Counter />
-</Layout>
+}> = ({ serverSide }) => {
 
+  globalThis.rerenderApp = useForceUpdate();
+
+  return <Layout serverSide={serverSide}>
+    <Router />
+  </Layout>;
+};
 export default App;
