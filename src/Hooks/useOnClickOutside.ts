@@ -4,9 +4,10 @@ const useOnClickOutside = (
   ref: RefObject<HTMLElement>,
   callback: CallableFunction = () => null
 ): void => {
+
   useEffect(() => {
     const listener = (event: TouchEvent | MouseEvent) => {
-      if (!ref || !ref.current || ref.current.contains(event.target as HTMLElement))
+      if (ref?.current?.contains(event.target as HTMLElement))
         return;
       callback(event);
     };

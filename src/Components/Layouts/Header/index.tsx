@@ -4,6 +4,6 @@ import classes from './classes.sass';
 
 const Header: FunctionComponent = () => <Container className={classes.header} fixed maxWidth={false}>
   <div />
-</Container>
+</Container>;
 
 export default Header;

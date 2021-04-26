@@ -1,15 +1,15 @@
-import { fr as btnFr, en as btnEn } from './btn';
-import { fr as postFr, en as postEn } from './post';
-import { fr as albumFr, en as albumEn } from './album';
+import * as btn from './btn';
+import * as post from './post';
+import * as album from './album';
 
-export const fr = {
-  btn: btnFr,
-  post: postFr,
-  album: albumFr,
-};
+import mapValues from 'lodash/mapValues';
+import get from 'lodash/get';
 
-export const en = {
-  btn: btnEn,
-  post: postEn,
-  album: albumEn,
-};
+const selectLangage = (locale) => mapValues({
+  btn,
+  post,
+  album
+}, (trads) => get(trads, locale));
+
+export const fr = selectLangage('fr');
+export const en = selectLangage('en');

@@ -7,9 +7,9 @@ import upperCase from 'lodash/toUpper';
 import lowerCase from 'lodash/toLower';
 import capitalize from 'lodash/capitalize';
 
-import { tFunctionalMap } from 'types/types';
+import { IFunctionalMap } from 'types/types';
 
-const cases: tFunctionalMap = {
+const cases: IFunctionalMap = {
   'pascal': (s:string) => upperFirst(camelCase(s)), 'camel': camelCase,
   'snake': snakeCase, 'start': startCase, 'kebab': kebabCase,
   'upper': upperCase, 'lower': lowerCase, 'capitalize': capitalize,

@@ -5,7 +5,7 @@ const useUpdate = (callback: EffectCallback, args: DependencyList): void => {
   useEffect(() => {
     if (didMount.current)
       return callback();
-    didMount.current = true
+    didMount.current = true;
   }, args);
 }
 

@@ -1,4 +1,4 @@
-import { tImport } from './../types/types.d';
+import { IFunctionImport } from './../types/types.d';
 import { useEffect, useState, useRef } from 'react';
 import useForceUpdate from './useForceUpdate';
 import * as workers from 'workers';
@@ -21,7 +21,7 @@ const useWorker = (workerName: string, callback: CallableFunction = () => {}): [
   const forceUpdate = useForceUpdate();
 
   const initWorker = () => {
-    const WorkerConstructor = (workers as tImport)[workerName] as unknown as Worker & (new () => Worker);
+    const WorkerConstructor = (workers as IFunctionImport)[workerName] as unknown as Worker & (new () => Worker);
     if (!WorkerConstructor)
       throw new Error(`"${workerName}" is not handle as worker.`);
     const worker = new WorkerConstructor();
@@ -32,7 +32,7 @@ const useWorker = (workerName: string, callback: CallableFunction = () => {}): [
   };
 
   const messageHandler = ({ data: { result, error } }: IWorkerResult) => {
-    if (error) return console.log(`${workerName}Worker error:`, error);
+    if (error) return console.error(`${workerName}Worker error:`, error);
     results.current = [ ...results.current, result ];
     forceUpdate();
   };

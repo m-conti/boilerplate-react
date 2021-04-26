@@ -3,8 +3,8 @@ import get from 'lodash/get';
 
 export default function(
   this: object,
-  path: [string]|string,
+  path: [string]|string|number,
   defaultValue: any = null
-): unknown {
+): any {
   return get(this, path, defaultValue);
 }

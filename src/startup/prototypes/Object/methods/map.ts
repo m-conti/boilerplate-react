@@ -2,11 +2,11 @@ import map from 'lodash/map';
 import mapValues from 'lodash/mapValues';
 import mapKeys from 'lodash/mapKeys';
 import flatMapDeep from 'lodash/flatMapDeep';
-import { tFunctionalMap } from 'types/types';
+import { IFunctionalMap } from 'types/types';
 import { Dictionary, NumericDictionary } from 'types/lodash';
 
 
-const actions: tFunctionalMap = {
+const actions: IFunctionalMap = {
   value: mapValues,
   key: mapKeys,
   array: map,

@@ -2,9 +2,9 @@ import trim from 'lodash/trim';
 import trimEnd from 'lodash/trimEnd';
 import trimStart from 'lodash/trimStart';
 
-import { tFunctionalMap } from 'types/types';
+import { IFunctionalMap } from 'types/types';
 
-const actions: tFunctionalMap = {
+const actions: IFunctionalMap = {
   'center': trim,
   'start': trimStart,
   'end': trimEnd

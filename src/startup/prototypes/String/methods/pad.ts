@@ -2,9 +2,9 @@ import pad from 'lodash/pad';
 import padEnd from 'lodash/padEnd';
 import padStart from 'lodash/padStart';
 
-import { tFunctionalMap } from 'types/types';
+import { IFunctionalMap } from 'types/types';
 
-const actions: tFunctionalMap = {
+const actions: IFunctionalMap = {
   'center': pad,
   'start': padStart,
   'end': padEnd

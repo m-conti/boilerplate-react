@@ -1,5 +1,5 @@
 import { Moment } from 'moment';
-import { tCheckString } from 'types/types';
+import { ICheckString } from 'types/types';
 import { TOptions } from 'i18next';
 
 declare global {
@@ -19,9 +19,9 @@ declare global {
     ascheck(
       selects:
         | string
-        | tCheckString
+        | ICheckString
         | RegExp
-        | [string | tCheckString | RegExp],
+        | [string | ICheckString | RegExp],
       ...params: any[]
     ): boolean;
     asformat(params?: object, option?: TemplateOption): string;

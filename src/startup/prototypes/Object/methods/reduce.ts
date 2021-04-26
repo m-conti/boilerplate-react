@@ -1,10 +1,10 @@
 import reduce from 'lodash/reduce';
 import reduceRight from 'lodash/reduceRight';
-import { tFunctionalMap } from 'types/types';
+import { IFunctionalMap } from 'types/types';
 import { MemoListIterator, Dictionary, NumericDictionary } from 'types/lodash';
 
 
-const actions: tFunctionalMap = {
+const actions: IFunctionalMap = {
   left: reduce,
   right: reduceRight,
 };

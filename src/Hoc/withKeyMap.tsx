@@ -27,8 +27,10 @@ interface IKeys {
 
 export default (Component: ComponentType<IChildProps>): ReactNode => forwardRef(
   ({ tabIndex = 0, ...props }: IProps, ref) => {
+
     const [ keys, setKeys ] = useState<IKeys>({});
     const refKey = createRef<HTMLDivElement>();
+
     const actions: KeyboardEventHandler = (event) => {
       const action = keys[event.key];
       if (action) {
@@ -38,12 +40,13 @@ export default (Component: ComponentType<IChildProps>): ReactNode => forwardRef(
       }
       return event;
     };
+
     return <div onKeyDown={actions} ref={refKey} tabIndex={tabIndex}>
       <Component
         ref={ref}
         {...props}
         actionKeys={actions}
-        focusKeys={() => refKey.current && refKey.current.focus()}
+        focusKeys={() => refKey.current?.focus()}
         setKeys={setKeys}
       />
     </div>;

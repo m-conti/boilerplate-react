@@ -1,22 +1,21 @@
 import i18n from 'startup/i18n/i18n';
 import moment from 'moment';
 import { TOptions, Callback, TFunction } from 'i18next';
-import { Global } from 'types/global';
 
-declare const global: Global;
+import { tLocale } from 'types/types';
 
-export default class Lang {
-  static get(): string {
-    return i18n.language;
+class Lang {
+  static get(): tLocale {
+    return i18n.language as tLocale;
   }
 
   static set(langage: string, callback?: Callback): Promise<TFunction> {
     const cb = (error: any, t: TFunction):void|null => {
       if (!error) {
         moment.locale(langage);
-        (global.rerender || (() => null))();
+        rerenderApp();
       }
-      return (callback || (() => null))(error, t);
+      return callback?.(error, t);
     };
     return i18n.changeLanguage(langage, cb);
   }
@@ -25,3 +24,5 @@ export default class Lang {
     return i18n.t(key, params);
   }
 }
+
+export default Lang;

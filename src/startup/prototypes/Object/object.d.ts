@@ -2,7 +2,7 @@ import { ConformsPredicateObject } from 'types/lodash';
 
 declare global {
   interface Object {
-    asget(path: [string] | string, defaultValue?: any): unknown;
+    asget(path: [string] | string | number, defaultValue?: any): any;
     asmap(iteratee: Function, option?: 'key' | 'value' | 'array' | 'flat');
     asreduce(
       iteratee: MemoListIterator<unknown, unknown, [unknown]>,
@@ -10,7 +10,7 @@ declare global {
       direction?: 'left' | 'right'
     ): any;
     asfilter(iteratee: Function): object;
-    asfind(predicate: Function, fromIndex?: number): unknown;
+    asfind(predicate: Function, fromIndex?: number): any;
     aseach(iteratee: Function, direction?: 'left' | 'right'): object;
     asomit(
       arg: [string] | string | ((value: never, key: string) => unknown)

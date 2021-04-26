@@ -6,6 +6,6 @@ export default function(
   this: Dictionary<never>|NumericDictionary<never>,
   predicate: Function,
   fromIndex?: number,
-): unknown {
+): any {
   return find(this, predicate, fromIndex);
 }

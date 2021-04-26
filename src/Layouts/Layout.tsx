@@ -19,9 +19,11 @@ const theme = createMuiTheme({
 
 const Layout: FunctionComponent<{
   serverSide:boolean,
-  children: ReactChild
+  children: ReactChild|ReactChild[]
 }> = ({ serverSide, children }) => {
+
   const Router: ComponentType<StaticRouterProps|BrowserRouterProps> = serverSide ? StaticRouter : BrowserRouter;
+
   return <ThemeProvider theme={theme}>
     <Router>
       {/* <Lang> */}
@@ -35,7 +37,7 @@ const Layout: FunctionComponent<{
       {/* </Lang> */}
     </Router>
     <div className={classes.background} />
-  </ThemeProvider>
-}
+  </ThemeProvider>;
+};
 
 export default Layout;

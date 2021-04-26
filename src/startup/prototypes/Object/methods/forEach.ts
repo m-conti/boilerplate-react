@@ -1,9 +1,9 @@
 import forEach from 'lodash/forEach';
 import forEachRight from 'lodash/forEachRight';
-import { tFunctionalMap } from 'types/types';
+import { IFunctionalMap } from 'types/types';
 
 
-const actions: tFunctionalMap = {
+const actions: IFunctionalMap = {
   left: forEach,
   right: forEachRight,
 };
