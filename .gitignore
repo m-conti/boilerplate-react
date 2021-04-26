@@ -5,3 +5,7 @@
 /reports/
 /.idea/
 /package-lock.json
+
+# wasm
+/crate/target/
+/crate/Cargo.lock

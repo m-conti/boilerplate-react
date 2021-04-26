@@ -4,6 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 const paths = require('./paths');
 const set = require('lodash/set');
 
@@ -26,7 +27,11 @@ let config = {
     new MiniCssExtractPlugin({
       filename: DEV_ENV ? '[name].css' : '[name].[hash].css',
       chunkFilename: DEV_ENV ? '[id].css' : '[id].[hash].css',
-    })
+    }),
+    new WasmPackPlugin({
+      crateDirectory: paths.wasmCrate,
+      outDir: paths.wasmOut,
+    }),
   ],
   devServer: {
     contentBase: paths.out,
