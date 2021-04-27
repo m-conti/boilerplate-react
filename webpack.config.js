@@ -14,5 +14,5 @@ const mergeWebpack = (...args) => mergeWith(...args, (targetVal, sourceVal) => {
 
 module.exports = [
   mergeWebpack(clientSide, common),
-  mergeWebpack(serverSide, common)
+  // mergeWebpack(serverSide, common)
 ];

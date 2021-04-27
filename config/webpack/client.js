@@ -1,5 +1,6 @@
 /* eslint-disable prefer-const */
 /* eslint-disable curly */
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -25,8 +26,9 @@ let config = {
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: DEV_ENV ? '[name].css' : '[name].[hash].css',
-      chunkFilename: DEV_ENV ? '[id].css' : '[id].[hash].css',
+      filename: DEV_ENV ? '[name].css' : '[name].[contenthash].css',
+      chunkFilename: DEV_ENV ? '[id].css' : '[id].[contenthash].css',
+      experimentalUseImportModule: true,
     }),
     new WasmPackPlugin({
       crateDirectory: paths.wasmCrate,
@@ -45,8 +47,8 @@ let config = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          { loader: MiniCssExtractPlugin.loader, options: { hmr: DEV_ENV } },
-          { loader: 'css-loader', options: { modules: { localIdentName: '[local]__[hash:base64:5]' } } },
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: 'css-loader', options: { modules: { localIdentName: '[local]__[contenthash:base64:5]' } } },
           { loader: 'postcss-loader' },
           { loader: 'sass-loader' }
         ]
@@ -54,8 +56,8 @@ let config = {
       {
         test: /\.css$/i,
         use: [
-          { loader: MiniCssExtractPlugin.loader, options: { hmr: DEV_ENV } },
-          { loader: 'css-loader', options: { modules: { localIdentName: '[local]__[hash:base64:5]' } } },
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: 'css-loader', options: { modules: { localIdentName: '[local]__[contenthash:base64:5]' } } },
           { loader: 'postcss-loader' }
         ]
       },
@@ -73,7 +75,7 @@ let config = {
         ],
       },
       {
-        test: /\.worker.js$/i,
+        test: /\.worker\.js$/i,
         use: [
           { loader: 'worker-loader' }
         ],
@@ -83,8 +85,9 @@ let config = {
 };
 
 if (DEV_ENV) {
-  set(config, 'devtool', 'cheap-module-eval-source-map');
+  set(config, 'devtool', 'eval-cheap-module-source-map');
   set(config, 'entry.client', [ 'react-hot-loader/patch', config.entry.client ]);
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
   config.plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, defaultSizes: 'gzip', analyzerPort: 8989 }));
 }
 

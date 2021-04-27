@@ -15,5 +15,8 @@
     "test": {
       "presets": ["@babel/env", "@babel/react", "@babel/typescript"]
     }
-  }
+  },
+  "ignore": [
+    "src/pkg/*"
+  ]
 }

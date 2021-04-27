@@ -1,7 +1,6 @@
-import * as python from '../python';
 self.languagePluginUrl = process.env.PUBLIC_URL;
-self.history = self.history || []
-importScripts('pyodide.js');
+
+importScripts('public/pkg/index.js');
 
 const dispatchAction = ({ type, payload }) => ({
   RETURN: (payload) => postMessage(payload),
@@ -9,4 +8,9 @@ const dispatchAction = ({ type, payload }) => ({
 
 onmessage = ({ data: { type, payload } }) => {
   dispatchAction({ type, payload });
-}
+};
+
+postMessage({ result: `LOADED on ${process.env.PUBLIC_URL}` });
+
+
+// greet();

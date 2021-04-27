@@ -17,7 +17,7 @@ let config = {
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) }}),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
   ],
   resolve: {
     extensions: [ '.js', '.jsx', '.ts', '.tsx', '.json' ],
@@ -30,34 +30,47 @@ let config = {
       'webpack.config': paths.webpackConfig,
     },
     plugins: [
-      new ModuleScopePlugin(paths.src, [paths.packageJson])
+      new ModuleScopePlugin([ paths.src, paths.nodeModules ], [paths.packageJson])
     ]
   },
+  experiments: { syncWebAssembly: true },
   module: {
     rules: [
+      // es-lint
       {
         enforce: 'pre',
         test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          formatter: eslintFormatter
-        }
+        use: [
+          { loader: 'eslint-loader', options: { formatter: eslintFormatter }},
+        ],
       },
+      // js
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|\.worker\.js$)/,
-        use: [ 'react-hot-loader/webpack', 'babel-loader' ],
+        use: [
+          { loader: 'react-hot-loader/webpack' },
+          { loader: 'babel-loader' }
+        ],
+        resolve: { fullySpecified: false }
       },
+      // ts
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [ 'react-hot-loader/webpack', 'ts-loader' ],
+        use: [
+          { loader: 'react-hot-loader/webpack' },
+          { loader: 'ts-loader'}
+        ],
       },
+      // yaml
       {
         test: /\.ya?ml$/,
         type: 'json',
-        use: 'yaml-loader'
+        use: [
+          { loader: 'yaml-loader' }
+        ],
       }
     ],
   }

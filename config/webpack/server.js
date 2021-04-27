@@ -21,7 +21,9 @@ let config = {
     rules: [
       {
         test: /\.(s[ac]ss|css|png|jpe?g|gif|svg|woff2?|eot|ttf|otf|\.worker\.js)$/i,
-        use: ['null-loader']
+        use: [
+          { loader: 'null-loader' },
+        ]
       },
     ]
   }
