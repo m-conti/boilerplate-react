@@ -1,6 +1,4 @@
-self.languagePluginUrl = process.env.PUBLIC_URL;
-
-importScripts('public/pkg/index.js');
+import { greet } from 'pkg';
 
 const dispatchAction = ({ type, payload }) => ({
   RETURN: (payload) => postMessage(payload),
@@ -10,7 +8,5 @@ onmessage = ({ data: { type, payload } }) => {
   dispatchAction({ type, payload });
 };
 
-postMessage({ result: `LOADED on ${process.env.PUBLIC_URL}` });
+postMessage({ result: greet() });
 
-
-// greet();

@@ -33,7 +33,7 @@ let config = {
       new ModuleScopePlugin([ paths.src, paths.nodeModules ], [paths.packageJson])
     ]
   },
-  experiments: { syncWebAssembly: true },
+  experiments: { asyncWebAssembly: true },
   module: {
     rules: [
       // es-lint
