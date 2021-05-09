@@ -2,6 +2,10 @@ export interface IFunctionImport {
   [key: string]: Function
 }
 
+export interface IWorkersImport {
+  [key: string]: WebpackWorker
+}
+
 export interface IFunctionalMap {
   [key: string]: Function
 }

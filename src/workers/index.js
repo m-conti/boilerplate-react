@@ -1,1 +1,1 @@
-export { default as main } from './main.worker';
+export { default as wasm } from './wasm.worker.js';

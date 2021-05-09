@@ -2,8 +2,8 @@ import { ObjectIteratee } from 'types/lodash';
 
 declare global {
   interface Array<T> {
-    asfirst(): T | null;
-    aslast(): T | null;
+    asfirst(): T | unknown | null;
+    aslast(): T | unknown | null;
     asflat(depth?: number): any[];
     asshuffle(): Array<T>;
     asorder(

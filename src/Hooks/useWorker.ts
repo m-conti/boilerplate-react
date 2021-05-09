@@ -1,4 +1,4 @@
-import { IFunctionImport } from './../types/types.d';
+import { IWorkersImport } from 'types/types';
 import { useEffect, useState, useRef } from 'react';
 import useForceUpdate from './useForceUpdate';
 import * as workers from 'workers';
@@ -17,11 +17,11 @@ interface IWorkerError extends ErrorEvent {
   lineno: number
 }
 
-const useWorker = (workerName: string, callback: CallableFunction = () => {}): [any[], TPost] => {
+const useWorker = (workerName: string, callback: CallableFunction = () => {}): [unknown[], TPost] => {
   const forceUpdate = useForceUpdate();
 
   const initWorker = () => {
-    const WorkerConstructor = (workers as IFunctionImport)[workerName] as unknown as Worker & (new () => Worker);
+    const WorkerConstructor = (workers as IWorkersImport)[workerName];
     if (!WorkerConstructor)
       throw new Error(`"${workerName}" is not handle as worker.`);
     const worker = new WorkerConstructor();
@@ -44,8 +44,9 @@ const useWorker = (workerName: string, callback: CallableFunction = () => {}): [
   };
 
   const resultHandler = () => {
+    console.log(results.current);
     if (results.current.length)
-      return callback(results.current.aslast())
+      return callback(results.current.aslast());
   };
 
   const results = useRef<unknown[]>([]);
@@ -55,6 +56,6 @@ const useWorker = (workerName: string, callback: CallableFunction = () => {}): [
   useEffect(initWorker, []);
 
   return [ results.current, post ];
-}
+};
 
 export default useWorker;
