@@ -5,8 +5,7 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import error from '@material-ui/core/colors/deepOrange';
 import success from '@material-ui/core/colors/green';
 import { SnackbarProvider } from 'notistack';
-import { StaticRouter, BrowserRouter, BrowserRouterProps } from 'react-router-dom';
-import { StaticRouterProps } from 'react-router';
+import { BrowserRouter, BrowserRouterProps } from 'react-router-dom';
 import { Header } from 'Components/Layouts';
 import classes from './classes.sass';
 
@@ -18,11 +17,10 @@ const theme = createMuiTheme({
 });
 
 const Layout: FunctionComponent<{
-  serverSide:boolean,
   children: ReactChild|ReactChild[]
-}> = ({ serverSide, children }) => {
+}> = ({ children }) => {
 
-  const Router: ComponentType<StaticRouterProps|BrowserRouterProps> = serverSide ? StaticRouter : BrowserRouter;
+  const Router: ComponentType<BrowserRouterProps> = BrowserRouter;
 
   return <ThemeProvider theme={theme}>
     <Router>
