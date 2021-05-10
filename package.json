@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
   "version": "1.0.0",
-  "description": "boilerplate react project (wasm|worker|multipage|traductions) ready",
+  "description": "boilerplate react project (wasm|worker|multipage|i18n) ready",
   "author": "mconti",
   "license": "MIT",
   "scripts": {
