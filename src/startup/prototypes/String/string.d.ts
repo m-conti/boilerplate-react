@@ -26,7 +26,7 @@ declare global {
     ): boolean;
     asformat(params?: object, option?: TemplateOption): string;
     asconvert(
-      select: 'date' | 'translate' | 'path',
+      select: 'date' | 'translate' | 'path' | 'locate',
       params?: string | TOptions<object>
     ): string | object | Moment;
     astrim(

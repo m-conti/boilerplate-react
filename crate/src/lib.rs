@@ -9,5 +9,5 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 #[wasm_bindgen]
 pub fn greet() -> String {
 
-    "Return of wasm".into()
+    "Return of wasm new".into()
 }
