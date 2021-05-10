@@ -12,4 +12,4 @@ exports.webpackConfig = resolveApp('webpack.config.js');
 exports.wasmCrate = resolveApp('crate');
 exports.wasmOut = resolveApp('src/pkg');
 exports.out = resolveApp('dist');
-exports.public = process.env.NODE_ENV === 'production' ? '/public/' : '/';
+exports.public = '/';

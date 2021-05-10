@@ -1,12 +1,16 @@
-import React, { ReactChild, FunctionComponent, ComponentType } from 'react';
-import Container from '@material-ui/core/Container';
+import React, { ReactChild, FunctionComponent } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
 import { ThemeProvider } from '@material-ui/core/styles';
+import { SnackbarProvider } from 'notistack';
+import Container from '@material-ui/core/Container';
+
+import { Header } from 'Components/Layouts';
+
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import error from '@material-ui/core/colors/deepOrange';
 import success from '@material-ui/core/colors/green';
-import { SnackbarProvider } from 'notistack';
-import { BrowserRouter, BrowserRouterProps } from 'react-router-dom';
-import { Header } from 'Components/Layouts';
+
 import classes from './classes.sass';
 
 const theme = createMuiTheme({
@@ -19,11 +23,10 @@ const theme = createMuiTheme({
 const Layout: FunctionComponent<{
   children: ReactChild|ReactChild[]
 }> = ({ children }) => {
-
-  const Router: ComponentType<BrowserRouterProps> = BrowserRouter;
+  console.log('');
 
   return <ThemeProvider theme={theme}>
-    <Router>
+    <BrowserRouter>
       {/* <Lang> */}
       <SnackbarProvider>
         <Header />
@@ -33,7 +36,7 @@ const Layout: FunctionComponent<{
         {/* <Footer /> */}
       </SnackbarProvider>
       {/* </Lang> */}
-    </Router>
+    </BrowserRouter>
     <div className={classes.background} />
   </ThemeProvider>;
 };

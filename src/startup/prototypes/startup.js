@@ -1,7 +1,7 @@
 import setPrototypes from './setPrototypes';
 
+setPrototypes(Object, require('./Object'));
+setPrototypes(Array, require('./Array'));
 setPrototypes(String, require('./String'));
 setPrototypes(Date, require('./Date'));
-setPrototypes(Array, require('./Array'));
 setPrototypes(Function, require('./Function'));
-setPrototypes(Object, require('./Object'));

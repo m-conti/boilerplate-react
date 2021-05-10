@@ -2,7 +2,7 @@ import { Dictionary } from 'types/lodash';
 import routes from './routes';
 import { PARAM_HANDLER, PARAM_REPLACER, REGEX_LOCALE } from './constants';
 
-import { IRoute, IListPathData, IPathData } from 'types/page';
+import { IRoute, IListPathData, IPathData, ILocationData } from 'types/page';
 import { tLocale } from 'types/types';
 
 const removeParametersFromPath = (path: string): string => path
@@ -23,11 +23,11 @@ const locations: IListPathData = routes.asmap(({name, path}: IRoute): IPathData 
 
 console.log('locations : ', locations);
 
-const locate = (path: string): string => {
+const locate = (path: string): ILocationData | null => {
 
   const value = locations.asfind(({ match }: IPathData) => new RegExp(`^${match}`).test(path));
 
-  if (!value) return path;
+  if (!value) return null;
 
   const [ , ...params ] = path.match(new RegExp(value.match)) || [];
 

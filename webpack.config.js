@@ -6,7 +6,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -163,10 +163,11 @@ if (DEV_ENV) {
 }
 
 if (PROD_ENV) {
-  config.plugins.push(new ManifestPlugin());
+  config.plugins.push(new WebpackManifestPlugin());
   config.plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, defaultSizes: 'gzip', analyzerMode: 'static' }));
   config.plugins.push(new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['dist'], verbose: true }));
-  config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
+  set(config, 'optimization.chunkIds', 'total-size');
+  set(config, 'optimization.moduleIds', 'size');
 }
 
 module.exports = config;

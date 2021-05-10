@@ -3,6 +3,7 @@ import { TOptions } from 'i18next';
 import moment from 'moment';
 import { IFunctionalMap } from 'types/types';
 import { path, locate } from 'routes';
+import { ILocationData } from 'types/page';
 
 const cases: IFunctionalMap = {
   date: moment,
@@ -15,6 +16,6 @@ export default function(
   this: string,
   select: 'date'|'translate'|'path'|'locate',
   params?: string | TOptions<object>
-): string | object | moment.Moment {
+): string | object | moment.Moment | ILocationData | null {
   return (cases[select] || (() => this))(this, params);
 }

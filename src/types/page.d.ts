@@ -27,11 +27,14 @@ export interface IPageMiddlewareList {
   [key: string]: IPageMiddleware
 }
 
-export interface IPathData {
-  match: string
+export interface ILocationData {
   name: string
   locale: tLocale
   params: Dictionary<string>
+}
+
+export interface IPathData extends ILocationData {
+  match: string
 }
 
 export interface IListPathData {
