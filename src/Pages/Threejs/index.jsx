@@ -7,6 +7,8 @@ import {
   CAM_ASPECT,
   CAM_NEAR_PLANE,
   CAM_FAR_PLANE,
+  RENDERER_SIZE_HEIGHT,
+  RENDERER_SIZE_WIDTH
 } from 'helpers/constans/three';
 
 import './classes.sass';
@@ -23,12 +25,13 @@ export default () => {
       CAM_FAR_PLANE
     );
     const renderer = new THREE.WebGLRenderer(scene, camera);
+    renderer.setSize(RENDERER_SIZE_WIDTH, RENDERER_SIZE_HEIGHT);
     containerRef.current.appendChild(renderer.domElement);
   };
 
   useEffect(initThree, []);
 
-  return <Grid alignItems='center' className='article' container direction='column' justify='center'>
+  return <Grid alignItems='center' container direction='column' justify='center'>
     <div ref={containerRef} />
   </Grid>;
 };
