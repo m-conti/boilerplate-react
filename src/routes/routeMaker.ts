@@ -36,6 +36,7 @@ const routePage = (
     return {
       name: location,
       path,
+      exact: get(page, 'exact', false),
       component: composeMiddleware(page.component, [
         ...middlewares,
         ...(page.middlewares || []),

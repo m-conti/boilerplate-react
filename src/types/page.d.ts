@@ -14,6 +14,7 @@ export interface IPage {
 export interface IRoute {
   name: string;
   path: string;
+  exact: boolean;
   component: ComponentType;
 }
 
