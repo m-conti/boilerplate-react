@@ -28,6 +28,6 @@ const useLocalStorage = <T extends unknown>(
   };
 
   return [ storedValue, setValue ];
-}
+};
 
 export default useLocalStorage;

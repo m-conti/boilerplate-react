@@ -2,6 +2,7 @@ import { IWorkersImport } from 'types/types';
 import { useEffect, useState, useRef } from 'react';
 import useForceUpdate from './useForceUpdate';
 import * as workers from 'workers';
+import useMount from './useMount';
 
 type TPost = Function | null;
 
@@ -53,7 +54,7 @@ const useWorker = (workerName: string, callback: CallableFunction = () => {}): [
   const [ post, setPost ] = useState<TPost>(null);
 
   useEffect(resultHandler, [results.current]);
-  useEffect(initWorker, []);
+  useMount(initWorker);
 
   return [ results.current, post ];
 };

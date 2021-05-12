@@ -9,6 +9,6 @@ const useInterval = (callback = () => null, delay = 1): void => {
     const id = setInterval(savedCallback.current, delay);
     return () => clearInterval(id);
   }, [delay]);
-}
+};
 
 export default useInterval;

@@ -3,22 +3,23 @@ import { useRef, useEffect } from 'react';
 
 const useEventListener = (
   eventName: string,
-  handler = () => null,
-  element: Node | Window = window
+  handler: EventListenerOrEventListenerObject,
+  activator = true,
+  element: Node | Window = window,
 ): void => {
 
-  const savedHandler = useRef<Function>(handler);
+  const savedHandler = useRef<EventListenerOrEventListenerObject>(handler);
 
   useEffect(() => {
     savedHandler.current = handler;
   }, [handler]);
 
   useEffect(() => {
-    if (!element?.addEventListener) return;
-    const eventListener = (event: Event) => savedHandler.current(event);
+    if (!element?.addEventListener || !activator) return;
+    const eventListener = savedHandler.current;
     element.addEventListener(eventName, eventListener);
     return () => element.removeEventListener(eventName, eventListener);
-  }, [ eventName, element ]);
-}
+  }, [ eventName, element, activator ]);
+};
 
 export default useEventListener;

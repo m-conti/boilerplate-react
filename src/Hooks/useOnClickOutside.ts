@@ -18,6 +18,6 @@ const useOnClickOutside = (
       document.removeEventListener('touchstart', listener);
     };
   }, [ ref, callback ]);
-}
+};
 
 export default useOnClickOutside;

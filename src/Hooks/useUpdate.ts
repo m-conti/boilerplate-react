@@ -7,6 +7,6 @@ const useUpdate = (callback: EffectCallback, args: DependencyList): void => {
       return callback();
     didMount.current = true;
   }, args);
-}
+};
 
 export default useUpdate;
