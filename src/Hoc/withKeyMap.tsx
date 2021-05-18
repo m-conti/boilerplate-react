@@ -9,6 +9,7 @@ import React, {
   Ref
 } from 'react';
 
+import classes from './keyMapStyle.sass';
 
 interface IProps {
   tabIndex: number
@@ -41,7 +42,7 @@ export default (Component: ComponentType<IChildProps>): ReactNode => forwardRef(
       return event;
     };
 
-    return <div onKeyDown={actions} ref={refKey} tabIndex={tabIndex}>
+    return <div className={classes.map} onKeyDown={actions} ref={refKey} tabIndex={tabIndex}>
       <Component
         ref={ref}
         {...props}
