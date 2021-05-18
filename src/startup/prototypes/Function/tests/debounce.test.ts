@@ -5,7 +5,7 @@ describe('Function.prototypes.asdebounce', () => {
 
   beforeEach(() => {
     value = false;
-  })
+  });
 
   it('asdebounce active async', (done) => {
     const fct: Function = (() => {

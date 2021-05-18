@@ -3,6 +3,7 @@ import { ConformsPredicateObject } from 'types/lodash';
 declare global {
   interface Object {
     asget(path: [string] | string | number, defaultValue?: any): any;
+    asgetor(path: (string | number)[], defaultValue?: any): any;
     asmap(iteratee: Function, option?: 'key' | 'value' | 'array' | 'flat');
     asreduce(
       iteratee: MemoListIterator<unknown, unknown, [unknown]>,
@@ -30,6 +31,10 @@ declare global {
       select: 'every' | 'some' | 'none',
       predicate: ConformsPredicateObject<object> | object
     ): boolean;
+    astype(
+      action: 'check' | 'convert',
+      type: 'array' | 'finite' | 'integer' | 'length' | 'number' | 'plainobject' | 'safeinteger' | 'string'
+    ): any;
     asset(path: [string] | string, defaultValue?: any): object;
     assetnew(path: [string] | string, defaultValue?: any): object;
   }

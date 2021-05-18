@@ -2,6 +2,7 @@ import withNew from '../helpers/withNew';
 
 import set from './methods/set';
 export { default as asget } from './methods/get';
+export { default as asgetor } from './methods/getor';
 export { default as asmap } from './methods/map';
 export { default as asreduce } from './methods/reduce';
 export { default as asfilter } from './methods/filter';
@@ -15,5 +16,6 @@ export { default as asflat } from './methods/flatten';
 export { default as aslength } from './methods/size';
 export { default as asclone } from './methods/clone';
 export { default as ascheck } from './methods/check';
+export { default as astype } from './methods/type';
 export const asset = set;
 export const assetnew = withNew(set);

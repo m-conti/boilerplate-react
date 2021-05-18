@@ -7,5 +7,6 @@ declare global {
       options?: DebounceSettings
     ): (...args: unknown[]) => unknown;
     asdelay(...params: unknown[]): unknown;
+    ascurry(action: 'left' | 'right' = 'left'): (...args: any[]) => any;
   }
 }

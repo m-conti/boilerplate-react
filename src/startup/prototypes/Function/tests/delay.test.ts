@@ -5,7 +5,7 @@ describe('Function.prototypes.asdelay', () => {
 
   beforeEach(() => {
     value = false;
-  })
+  });
 
   it('asdelay active async', (done) => {
     (() => {
