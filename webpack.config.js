@@ -81,15 +81,15 @@ let config = {
       // src
       {
         enforce: 'pre',
-        test: /\.(js|ts)x?$/,
-        exclude: /node_modules/,
+        test: /\.[jt]sx?$/i,
+        exclude: /node_modules/i,
         use: [
           { loader: 'eslint-loader', options: { formatter: eslintFormatter }},
         ],
       },
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|\.worker\.js$)/,
+        test: /\.jsx?$/i,
+        exclude: /(node_modules|\.worker\.js$)/i,
         use: [
           { loader: 'react-hot-loader/webpack' },
           { loader: 'babel-loader' }
@@ -97,7 +97,7 @@ let config = {
         resolve: { fullySpecified: false }
       },
       {
-        test: /\.tsx?$/,
+        test: /\.tsx?$/i,
         exclude: /node_modules/,
         use: [
           { loader: 'react-hot-loader/webpack' },
@@ -112,7 +112,7 @@ let config = {
       },
       // config
       {
-        test: /\.ya?ml$/,
+        test: /\.ya?ml$/i,
         type: 'json',
         use: [
           { loader: 'yaml-loader' }
